@@ -1,12 +1,11 @@
-defmodule Todo.Dependency do
+defmodule Todo.Tasks.Dependency do
   use Ecto.Schema
   import Ecto.Changeset
 
   schema "dependencies" do
-
-    field :task_id, :id
-    field :dependency_id, :id
-
+    belongs_to :task, Todo.Tasks.Task
+    belongs_to :dependency, Todo.Tasks.Task
+    
     timestamps()
   end
 
