@@ -13,10 +13,16 @@ groups = Todo.create_groups(groups)
 Enum.each(groups, fn group ->
   tasks =
     Enum.map(1..5, fn i ->
+      cond do
+        i == 1 -> "Locked Task"
+        i == 4 -> "Completed Task"
+        true -> "Incomplete Task"
+      end
+
       %{
-        "name" => "Task #{i} in #{group.name}",
-        "completed" => false,
-        "locked" => false,
+        "name" => task_name,
+        "completed" => i == 4,
+        "locked" => i == 1,
         "group_id" => group.id
       }
     end)
@@ -24,8 +30,7 @@ Enum.each(groups, fn group ->
   tasks = Todo.create_tasks(tasks)
 
   # Assign dependencies to each task
-  [task, dependency_task] = Enum.take_randon(2)
-  Todo.assign_dependencies(task.id, [dependency_task.id])
+  Todo.assign_dependencies(1, [3])
 end)
 
 IO.puts("Seed data for Groups, Tasks, and Dependencies are created Successfully!")

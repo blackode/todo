@@ -18,6 +18,8 @@ defmodule TodoWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :index
+    get "/groups", GroupController, :index
+    get "/groups/:group_id/tasks", TaskController, :index
   end
 
   # Other scopes may use custom stacks.

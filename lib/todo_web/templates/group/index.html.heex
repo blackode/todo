@@ -1,0 +1,14 @@
+<p class ="fs-1">Things To Do </p>
+<div class="m-4">
+  <%=  for group <- @groups do %>
+    <ul class="list-group">
+    <% url = "groups/#{group.id}/tasks" %>
+    <a href = {url} class = "link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover">
+      <li class="list-group-item">
+       <p class="fs-2 text-dark"> <%= group.name %></p>
+       <p class="fs-3 text-secondary"> <%= group_status(group) %> </p>
+      </li>
+      </a>
+    </ul>
+  <% end %>
+</div>

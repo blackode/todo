@@ -24,6 +24,7 @@ defmodule Todo.Groups do
         left_join: t in Todo.Tasks.Task,
         on: t.group_id == g.id,
         group_by: [g.id, g.name],
+        order_by: [asc: g.id],
         select: %{
           id: g.id,
           name: g.name,

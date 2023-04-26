@@ -16,8 +16,9 @@ defmodule Todo.Tasks.Task do
   @doc false
   def changeset(task, attrs) do
     task
-    |> cast(attrs, [:name, :completed, :locked])
+    |> cast(attrs, [:name, :completed, :locked, :group_id])
     |> cast_assoc(:dependent_tasks, with: &Todo.Tasks.Dependency.changeset/2)
-    |> validate_required([:name, :completed, :locked])
+    |> validate_required([:name, :completed, :locked, :group_id])
+    |> foreign_key_constraint(:group_id)
   end
 end

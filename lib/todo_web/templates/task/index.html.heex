@@ -1,0 +1,32 @@
+<p class ="fs-1"> <%= @group.name %> <span class="fs-2 p-6"> <a href="/groups"> All Groups </a> </span></p>
+<div class="m-4">
+  <%=  for task <- @tasks do %>
+    <ul class="list-group">
+      <% task_status = task_status(task) %>
+      <%= if task_status == "completed" do %>
+        <li class="list-group-item">
+          <p>
+              <input type="radio" class="btn-check btn-success" id="btncheck1" autocomplete="off"> 
+<del class="fs-3"> <%= task.name %></del>
+          </p>
+        </li>
+      <% end %>
+  
+      <%= if task_status == "locked" do %>
+        <li class="list-group-item disabled">
+<p class="fs-3"> <%= task.name %> </p>
+        </li>
+      <% end %>
+  
+      <%= if task_status == "default" do %>
+        <li class="list-group-itemi disabled">
+          <p class="fs-3"> 
+            <span> 
+              <input type="checkbox" class="btn-check" id="btncheck1" autocomplete="off"> 
+</span> <%= task.name %>
+          </p>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
+</div>
