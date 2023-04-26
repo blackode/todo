@@ -1,12 +1,11 @@
 defmodule Todo.Tasks do
   alias Todo.Repo
-  alias Todo.Tasks.Group
   import Ecto.Query
 
   @moduledoc """
   Context module for tasks
   """
-  @spec list_by_group(group_id :: pos_integer()) :: [%Todo.Tasks{}]
+  @spec list_by_group(group_id :: pos_integer()) :: [%Todo.Tasks.Task{}]
   def list_by_group(group_id) do
     query =
       from t in Todo.Tasks.Task,

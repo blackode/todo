@@ -6,8 +6,8 @@ defmodule Todo.Groups do
   @moduledoc """
   Context module for groups
   """
-  @spec create_group(map()) :: {:ok, %Group{}} | {:error, Ecto.Changeset}
-  def create_group(%{"name" => _name} = group_params) do
+  @spec create(map()) :: {:ok, %Group{}} | {:error, Ecto.Changeset}
+  def create(group_params) do
     %Group{}
     |> Group.changeset(group_params)
     |> Repo.insert()
@@ -18,7 +18,7 @@ defmodule Todo.Groups do
     Repo.get!(Group, id)
   end
 
-  def list_groups() do
+  def list() do
     query =
       from g in Group,
         left_join: t in Todo.Tasks.Task,
