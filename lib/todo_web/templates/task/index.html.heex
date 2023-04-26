@@ -6,8 +6,8 @@
       <%= if task_status == "completed" do %>
         <li class="list-group-item">
           <p class="fs-3 text-success">
-              <input type="radio" class="btn-check btn-success" id="btncheck1" autocomplete="off"> 
-               <label class="btn bg-success" for="btncheck1">   </label>
+              <input type="checkbox" class="btn-check btn-success" id={"task_#{task.id}"} autocomplete="off"> 
+               <label class="btn bg-success" for={"task_#{task.id}"}>   </label>
 <del class="fs-3"> <%= task.name %></del>
           </p>
         </li>
@@ -22,8 +22,8 @@
       <%= if task_status == "default" do %>
         <li class="list-group-item text-dark">
 <p class="fs-3 text-disabled"> 
-            <input type="radio" class="btn-check" id="btncheck1" autocomplete="off"> 
-             <label class="btn btn-outline-success btn-lg" for="btncheck1">   </label>
+            <input type="checkbox" class="btn-check" id={"task_#{task.id}"} autocomplete="off"> 
+             <label class="btn btn-outline-success btn-lg" for={"task_#{task.id}"}>   </label>
 <%= task.name %> </p>
         </li>
       <% end %>
