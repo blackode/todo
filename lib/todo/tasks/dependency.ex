@@ -5,7 +5,7 @@ defmodule Todo.Tasks.Dependency do
   schema "dependencies" do
     belongs_to :task, Todo.Tasks.Task
     belongs_to :dependency, Todo.Tasks.Task
-    
+
     timestamps()
   end
 

@@ -6,10 +6,9 @@ defmodule Todo.Tasks.Task do
     field :name, :string
     field :completed, :boolean, default: false
     field :locked, :boolean, default: false
-    
+
     belongs_to :group, Todo.Tasks.Group
     has_many :dependent_tasks, Todo.Tasks.Dependency, foreign_key: :dependency_id
-
 
     timestamps()
   end
