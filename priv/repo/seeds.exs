@@ -24,16 +24,8 @@ Enum.each(groups, fn group ->
   tasks = Todo.create_tasks(tasks)
 
   # Assign dependencies to each task
-  Enum.each(tasks, fn task ->
-    # Select 1-3 random dependencies for the task
-    dependencies =
-      Enum.shuffle(tasks)
-      |> Enum.reject(fn t -> t.id == task.id end)
-      |> Enum.take_random(Enum.random_between(1, 3))
-      |> Enum.map(& &1.id)
-
-    Todo.assign_dependencies(task, dependencies)
-  end)
+  [task, dependency_task] = Enum.take_randon(2)
+  Todo.assign_dependencies(task.id, [dependency_task.id])
 end)
 
 IO.puts("Seed data for Groups, Tasks, and Dependencies are created Successfully!")
