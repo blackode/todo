@@ -13,11 +13,12 @@ groups = Todo.create_groups(groups)
 Enum.each(groups, fn group ->
   tasks =
     Enum.map(1..5, fn i ->
-      cond do
-        i == 1 -> "Locked Task"
-        i == 4 -> "Completed Task"
-        true -> "Incomplete Task"
-      end
+      task_name =
+        cond do
+          i == 1 -> "Locked Task"
+          i == 4 -> "Completed Task"
+          true -> "Incomplete Task"
+        end
 
       %{
         "name" => task_name,

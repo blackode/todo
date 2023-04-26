@@ -5,28 +5,29 @@
       <% task_status = task_status(task) %>
       <%= if task_status == "completed" do %>
         <li class="list-group-item">
-          <p>
+          <p class="fs-3 text-success">
               <input type="radio" class="btn-check btn-success" id="btncheck1" autocomplete="off"> 
+               <label class="btn bg-success" for="btncheck1">   </label>
 <del class="fs-3"> <%= task.name %></del>
           </p>
         </li>
       <% end %>
   
       <%= if task_status == "locked" do %>
-        <li class="list-group-item disabled">
-<p class="fs-3"> <%= task.name %> </p>
+        <li class="list-group-item text-secondary">
+<p class="fs-3 text-disabled"> <%= task.name %> </p>
+        </li>
+      <% end %>
+
+      <%= if task_status == "default" do %>
+        <li class="list-group-item text-dark">
+<p class="fs-3 text-disabled"> 
+            <input type="radio" class="btn-check" id="btncheck1" autocomplete="off"> 
+             <label class="btn btn-outline-success btn-lg" for="btncheck1">   </label>
+<%= task.name %> </p>
         </li>
       <% end %>
   
-      <%= if task_status == "default" do %>
-        <li class="list-group-itemi disabled">
-          <p class="fs-3"> 
-            <span> 
-              <input type="checkbox" class="btn-check" id="btncheck1" autocomplete="off"> 
-</span> <%= task.name %>
-          </p>
-        </li>
-      <% end %>
     </ul>
   <% end %>
 </div>
