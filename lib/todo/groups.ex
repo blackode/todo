@@ -10,7 +10,7 @@ defmodule Todo.Groups do
   def create(group_params) do
     %Group{}
     |> Group.changeset(group_params)
-    |> Repo.insert()
+    |> Repo.insert!()
   end
 
   @spec get(pos_integer()) :: %Group{}
