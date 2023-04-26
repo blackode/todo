@@ -8,7 +8,7 @@ defmodule Todo do
   """
   @spec create_groups([map]) :: :ok
   def create_groups(groups) do
-    Enum.each(groups, &Todo.Groups.create/1)
+    Enum.map(groups, &Todo.Groups.create/1)
   end
 
   @spec create_tasks([map]) :: [%Todo.Tasks.Task{}]
